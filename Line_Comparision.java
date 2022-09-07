@@ -3,40 +3,53 @@ package day3;
 import java.util.Scanner;
 
 public class Line_Comparision {
-
-	public static void main(String[] args) {
-		System.out.println("Welcome to Line comparision computation");
-		Line_Comparision obj = new Line_Comparision();
-		obj.prob1();
-		
-	}
-	
-public static void prob1(){
-    int x1, x2, y1, y2;
-
-    double length;
-
+public static void main(String[] args) { 
     Scanner sc = new Scanner(System.in);
 
-    System.out.println("enter x1 point");
-    x1 = sc.nextInt();
+    System.out.print("Enter the coordinates for point p1 (x1,y1): ");
+    float x1 = sc.nextFloat();
+    float y1 = sc.nextFloat();
 
-    System.out.println("enter y1 point");
-    y1 = sc.nextInt();
+    System.out.print("Enter the coordinates for point p2 (x2, y2): ");
+    float x2 = sc.nextFloat();
+    float y2 = sc.nextFloat();
 
-    System.out.println("enter x2point");
-    x2 = sc.nextInt();
+    System.out.println();
 
-    System.out.println("enter y2 point");
-    y2 = sc.nextInt();
+    System.out.print("Enter the coordinates for point p3 (x3,y3): ");
+    float x3 = sc.nextFloat();
+    float y3 = sc.nextFloat();
 
-    length = Math.sqrt((x2 - x1) ^ 2 + (y2 - y1) ^ 2);
+    System.out.print("Enter the coordinates for point p4 (x4, y4): ");
+    float x4 = sc.nextFloat();
+    float y4 = sc.nextFloat();
 
+    System.out.println();
 
-    System.out.println("Length of Lines is : " + "(" + x1 + "," + y1 + ")," + "(" + x2 + "," + y2 + ")===>" + length);
+    double l1 = getLength(x1, y1, x2, y2);
+    double l2 = getLength(x3, y3, x4, y4);
 
-    System.out.println(" Checking Equality of Two Lengths:");
-    System.out.println(x1 + " == " + y1 + " : " + (x1 == y1));
-    System.out.println(x2 + " == " + y2 + " : " + (x2 == y2));
-}
+    String lengthL1 = String.format("%.02f", l1);
+    String lengthL2 = String.format("%.02f", l2);
+
+    if (lengthL1.equals(lengthL2)) {
+      System.out.println("The lines L1 and L2 are equal");
+    } else {
+      Integer L1 = (int) l1;
+      Integer L2 = (int) l2;
+
+      if (L1.compareTo(L2) > 0) {
+        System.out.println("Line 1 is greater.");
+      } else {
+        System.out.println("Line 2 is greater.");
+      }
+    }
+
+    sc.close();
+  }
+
+	static double getLength(float x1, float y1, float x2, float y2) {
+    return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+
+  }
 }
